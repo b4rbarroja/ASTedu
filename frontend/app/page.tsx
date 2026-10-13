@@ -109,7 +109,9 @@ export default function Home() {
         </form>
 
         {loading ? (
-          <p className="mt-8 text-sm text-neutral-600 dark:text-neutral-400">جاري تحميل المواد...</p>
+          <p className="mt-8 text-sm text-neutral-600 dark:text-neutral-400">
+            جاري تحميل المواد...
+          </p>
         ) : error ? (
           <p className="mt-8 text-sm text-red-600 dark:text-red-400">
             تعذر تحميل المواد، حاول مرة أخرى لاحقاً
@@ -136,9 +138,9 @@ export default function Home() {
           href="/add"
           className="mt-8 text-lg text-[#0b6b2f] hover:underline dark:text-[#4ade80]"
         >
-          كيف يعمل الموقع؟
+          أضف ملخصا
         </Link>
-        <p className="mt-8 text-lg text-[#0b6b2f] hover:underline dark:text-[#4ade80]">
+        <p className="mt-8 text-lg text-center text-[#0b6b2f] hover:underline dark:text-[#4ade80]">
           بكل بساطة هو موقع مفتوح للجميع لتصفح أو إضافة الملخصات بصيغ pdf و صور
         </p>
       </main>
