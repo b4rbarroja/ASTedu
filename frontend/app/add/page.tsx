@@ -75,7 +75,7 @@ export default function Add() {
   }
 
   const inputClass =
-    "h-[42px] w-full rounded-sm border border-neutral-300 bg-white px-3 text-base outline-none focus:border-[#4285f4]";
+    "h-[42px] w-full rounded-sm border border-neutral-300 bg-white px-3 text-base outline-none focus:border-[#4285f4] dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500";
 
   return (
     <div className="relative flex min-h-screen flex-col">
@@ -83,21 +83,21 @@ export default function Add() {
         className="absolute inset-0 -z-10 bg-cover bg-center"
         style={{ backgroundImage: "url('/bg.jpg')" }}
       />
-      <div className="absolute inset-0 -z-10 bg-white/75" />
+      <div className="absolute inset-0 -z-10 bg-white/75 dark:bg-neutral-950/75" />
 
       <main className="mx-auto w-full max-w-[560px] flex-1 px-4 pb-16 pt-8">
-        <h1 className="text-3xl font-medium text-neutral-700 sm:text-4xl">
+        <h1 className="text-3xl font-medium text-neutral-700 dark:text-neutral-200 sm:text-4xl">
           أضف ملخصاً
         </h1>
 
         <form
           onSubmit={handleSubmit}
-          className="mt-6 flex flex-col gap-5 rounded-sm border border-neutral-300 bg-white p-6"
+          className="mt-6 flex flex-col gap-5 rounded-sm border border-neutral-300 bg-white p-6 dark:border-neutral-700 dark:bg-neutral-900"
         >
           <div>
             <label
               htmlFor="subject"
-              className="mb-1.5 block text-sm text-neutral-700"
+              className="mb-1.5 block text-sm text-neutral-700 dark:text-neutral-300"
             >
               المادة
             </label>
@@ -122,7 +122,7 @@ export default function Add() {
           <div>
             <label
               htmlFor="title"
-              className="mb-1.5 block text-sm text-neutral-700"
+              className="mb-1.5 block text-sm text-neutral-700 dark:text-neutral-300"
             >
               عنوان الملخص
             </label>
@@ -139,7 +139,7 @@ export default function Add() {
           <div>
             <label
               htmlFor="author"
-              className="mb-1.5 block text-sm text-neutral-700"
+              className="mb-1.5 block text-sm text-neutral-700 dark:text-neutral-300"
             >
               اسم الرافع
             </label>
@@ -156,7 +156,7 @@ export default function Add() {
           <div>
             <label
               htmlFor="files"
-              className="mb-1.5 block text-sm text-neutral-700"
+              className="mb-1.5 block text-sm text-neutral-700 dark:text-neutral-300"
             >
               ملفات الملخص
             </label>
@@ -167,9 +167,9 @@ export default function Add() {
               multiple
               required
               accept="image/*,application/pdf"
-              className="block w-full rounded-sm border border-dashed border-neutral-400 bg-white p-3 text-sm text-neutral-600 file:ms-0 file:me-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-neutral-100 file:px-3 file:py-1.5 file:text-sm hover:border-[#4285f4]"
+              className="block w-full rounded-sm border border-dashed border-neutral-400 bg-white p-3 text-sm text-neutral-600 file:ms-0 file:me-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-neutral-100 file:px-3 file:py-1.5 file:text-sm hover:border-[#4285f4] dark:border-neutral-600 dark:bg-neutral-900 dark:text-neutral-400 dark:file:bg-neutral-800"
             />
-            <p className="mt-2 text-xs text-neutral-500">
+            <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
               صور أو PDF، حتى 5 ملفات وكل ملف حتى 10MB.
             </p>
           </div>

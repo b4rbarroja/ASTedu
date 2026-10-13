@@ -37,13 +37,13 @@ async function SubjectContent({
 
   return (
     <>
-      <h1 className="text-4xl font-medium text-neutral-700">{subject.title}</h1>
-      <p className="mt-2 text-neutral-600">د. {subject.prof}</p>
+      <h1 className="text-4xl font-medium text-neutral-700 dark:text-neutral-200">{subject.title}</h1>
+      <p className="mt-2 text-neutral-600 dark:text-neutral-400">د. {subject.prof}</p>
 
-      <h2 className="mt-10 mb-4 text-xl text-neutral-700">الملخصات</h2>
+      <h2 className="mt-10 mb-4 text-xl text-neutral-700 dark:text-neutral-200">الملخصات</h2>
 
       {summaries.length === 0 ? (
-        <p className="text-sm text-neutral-600">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
           لا توجد ملخصات لهذه المادة بعد
         </p>
       ) : (
@@ -51,7 +51,7 @@ async function SubjectContent({
           {summaries.map((s) => (
             <li
               key={s.id}
-              className="rounded-sm border border-neutral-300 bg-white p-4"
+              className="rounded-sm border border-neutral-300 bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900"
             >
               <div className="flex items-center justify-between gap-4">
                 <span>{s.title}</span>
@@ -90,7 +90,7 @@ export default function SubjectPage({
     <div className="flex min-h-screen flex-col">
       <main className="mx-auto w-full max-w-[720px] flex-1 px-4 pt-8">
         <Suspense
-          fallback={<p className="text-neutral-600">جاري التحميل...</p>}
+          fallback={<p className="text-neutral-600 dark:text-neutral-400">جاري التحميل...</p>}
         >
           <SubjectContent params={params} />
         </Suspense>

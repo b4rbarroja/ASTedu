@@ -1,4 +1,5 @@
 import { Noto_Sans_Arabic } from "next/font/google";
+import type { Viewport } from "next";
 import Navbar from "./Components/Nav";
 import Footer from "./Components/Footer";
 import "./globals.css";
@@ -13,6 +14,14 @@ export const metadata = {
   description: "Add, Summarize, Train !",
 };
 
+// Match the browser UI (mobile address bar, etc.) to the device theme.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body
-        className={`${font.className} flex min-h-screen flex-col text-neutral-800 antialiased`}
+        className={`${font.className} flex min-h-screen flex-col text-neutral-800 antialiased dark:text-neutral-200`}
       >
         <Navbar />
         <div className="flex flex-1 flex-col">{children}</div>

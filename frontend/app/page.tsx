@@ -32,7 +32,7 @@ function MenuIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-6 w-6 fill-neutral-600"
+      className="h-6 w-6 fill-neutral-600 dark:fill-neutral-400"
       aria-hidden="true"
     >
       <path d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z" />
@@ -81,7 +81,7 @@ export default function Home() {
     <div className="relative flex min-h-screen flex-col">
       <div className="absolute inset-0 -z-10 bg-cover bg-center" />
       <main className="flex flex-1 flex-col items-center px-4 pt-10 sm:pt-14">
-        <h1 className="text-5xl font-medium tracking-tight text-neutral-600 sm:text-6xl">
+        <h1 className="text-5xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300 sm:text-6xl">
           ASTedu
         </h1>
 
@@ -104,14 +104,14 @@ export default function Home() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="ابحث عن ملخص أو مادة"
-            className="h-[42px] flex-1 rounded-e-sm border border-neutral-300 bg-white px-3 text-base outline-none focus:border-[#4285f4]"
+            className="h-[42px] flex-1 rounded-e-sm border border-neutral-300 bg-white px-3 text-base outline-none focus:border-[#4285f4] dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500"
           />
         </form>
 
         {loading ? (
-          <p className="mt-8 text-sm text-neutral-600">جاري تحميل المواد...</p>
+          <p className="mt-8 text-sm text-neutral-600 dark:text-neutral-400">جاري تحميل المواد...</p>
         ) : error ? (
-          <p className="mt-8 text-sm text-red-600">
+          <p className="mt-8 text-sm text-red-600 dark:text-red-400">
             تعذر تحميل المواد، حاول مرة أخرى لاحقاً
           </p>
         ) : filtered.length > 0 ? (
@@ -120,7 +120,7 @@ export default function Home() {
               <li key={s.title}>
                 <Link
                   href={`/${encodeURIComponent(s.title)}`}
-                  className="inline-block rounded-sm border border-neutral-300 bg-white px-4 py-1.5 text-sm hover:border-[#4285f4] hover:text-[#4285f4]"
+                  className="inline-block rounded-sm border border-neutral-300 bg-white px-4 py-1.5 text-sm hover:border-[#4285f4] hover:text-[#4285f4] dark:border-neutral-700 dark:bg-neutral-900 dark:hover:text-[#6ea8ff]"
                 >
                   {s.title}
                 </Link>
@@ -128,17 +128,17 @@ export default function Home() {
             ))}
           </ul>
         ) : (
-          <p className="mt-8 text-sm text-neutral-600">
+          <p className="mt-8 text-sm text-neutral-600 dark:text-neutral-400">
             لا يوجد مادة بهذا الاسم، جرب غيره
           </p>
         )}
         <Link
           href="/add"
-          className="mt-8 text-lg text-[#0b6b2f] hover:underline"
+          className="mt-8 text-lg text-[#0b6b2f] hover:underline dark:text-[#4ade80]"
         >
           كيف يعمل الموقع؟
         </Link>
-        <p className="mt-8 text-lg text-[#0b6b2f] hover:underline">
+        <p className="mt-8 text-lg text-[#0b6b2f] hover:underline dark:text-[#4ade80]">
           بكل بساطة هو موقع مفتوح للجميع لتصفح أو إضافة الملخصات بصيغ pdf و صور
         </p>
       </main>
