@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://as-tedu.vercel.app";
+const API_URL = "https://as-tedu.vercel.app";
 
 type Subject = { title: string; prof: string };
 
