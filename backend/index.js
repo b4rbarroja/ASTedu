@@ -17,25 +17,46 @@ app.set("trust proxy", 1);
 app.use(express.json({ limit: "1mb" }));
 
 // ---------------------------------------------------------------------------
-// CORS — driven by ALLOWED_ORIGINS (comma separated). Never "*" with credentials.
+// CORS: hardcoded frontend origin + localhost for dev + anything extra from
+// ALLOWED_ORIGINS (comma separated). Never "*" with credentials.
 // Requests without an Origin header (curl, server-to-server) are not given
 // CORS headers, which is correct: only browsers care.
 // ---------------------------------------------------------------------------
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
-  .split(",")
-  .map((s) => s.trim())
+// Trim whitespace and strip trailing slashes so "https://x.app/" matches "https://x.app".
+const normalize = (s) => s.trim().replace(/\/+$/, "");
+
+const allowedOrigins = [
+  "https://astedu.vercel.app",
+  "http://localhost:3000",
+  ...(process.env.ALLOWED_ORIGINS || "").split(","),
+]
+  .map(normalize)
   .filter(Boolean);
 
 app.use(
   cors({
     origin(origin, callback) {
+      // No Origin header (curl, server-to-server): no CORS headers needed.
       if (!origin) return callback(null, false);
-      if (allowedOrigins.includes(origin)) return callback(null, origin);
-      return callback(null, false); // deny, never reflect
+
+      if (allowedOrigins.includes(normalize(origin))) {
+        return callback(null, origin);
+      }
+
+      // Deny (never reflect), but log so it's visible in Vercel logs.
+      console.warn(
+        "CORS blocked origin:",
+        origin,
+        "| allowed:",
+        allowedOrigins.join(", "),
+      );
+      return callback(null, false);
     },
     credentials: true,
     methods: ["GET", "POST", "DELETE", "OPTIONS"],
-  })
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 204,
+  }),
 );
 
 // ---------------------------------------------------------------------------
@@ -68,7 +89,7 @@ app.get(["/api/health", "/health"], healthHandler);
 app.get(["/api/health/db", "/health/db"], healthDbHandler);
 
 // ---------------------------------------------------------------------------
-// API — same reasoning as above: mounted at /subjects (original path) and
+// API: same reasoning as above: mounted at /subjects (original path) and
 // /api/subjects (destination path).
 // ---------------------------------------------------------------------------
 app.use("/subjects", subjects);
@@ -79,7 +100,7 @@ app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
 });
 
-// Central error handler — otherwise a rejected handler promise can leave a
+// Central error handler: otherwise a rejected handler promise can leave a
 // serverless function in an undefined state.
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
