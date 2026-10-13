@@ -1,0 +1,11 @@
+# Vercel upload exclusions (vercel CLI does NOT reliably honor .gitignore)
+.env
+.env.*
+node_modules
+npm-debug.log*
+*.log
+.vscode
+.agents
+.claude
+.cursor
+.devin

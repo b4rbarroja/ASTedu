@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Pooled Neon connection string (host contains "-pooler"). Used by the app
+  // at runtime and by Prisma Client queries.
+  url       = env("DATABASE_URL")
+  // Direct (non-pooled) Neon connection string. Used by the Prisma CLI for
+  // migrations, which need a stable session that PgBouncer cannot provide.
+  directUrl = env("DIRECT_URL")
+}
+
+model Subject {
+  title     String    @id
+  prof      String
+  summaries Summary[] // one to many
+}
+
+model Summary {
+  id           Int     @id @default(autoincrement())
+  title        String
+  author       String?
+  fileUrl      String  
+  fileType     String  
+  subjectTitle String  
+  subject      Subject @relation(fields: [subjectTitle], references: [title], onDelete: Cascade)
+}
