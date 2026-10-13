@@ -84,7 +84,9 @@ export default function Home() {
         <h1 className="text-5xl font-medium tracking-tight text-neutral-600 dark:text-neutral-300 sm:text-6xl">
           ASTedu
         </h1>
-
+        <p className="mt-8 text-lg text-center text-[#0b6b2f] hover:underline dark:text-[#4ade80]">
+          بكل بساطة هو موقع مفتوح للجميع لتصفح أو إضافة الملخصات بصيغ pdf و صور
+        </p>
         <form
           onSubmit={(e) => e.preventDefault()}
           className="mt-10 flex w-full max-w-[632px] shadow-sm"
@@ -140,9 +142,6 @@ export default function Home() {
         >
           أضف ملخصا
         </Link>
-        <p className="mt-8 text-lg text-center text-[#0b6b2f] hover:underline dark:text-[#4ade80]">
-          بكل بساطة هو موقع مفتوح للجميع لتصفح أو إضافة الملخصات بصيغ pdf و صور
-        </p>
       </main>
     </div>
   );
