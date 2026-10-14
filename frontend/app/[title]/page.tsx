@@ -70,17 +70,6 @@ async function SubjectContent({
                   {s.fileType === "pdf" ? "فتح PDF" : "عرض الصورة"}
                 </a>
               </div>
-
-              {s.fileType === "image" && (
-                <a
-                  href={s.fileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-[#4285f4] hover:underline"
-                >
-                  عرض الصورة{" "}
-                </a>
-              )}
             </li>
           ))}
         </ul>
