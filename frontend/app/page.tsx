@@ -105,7 +105,7 @@ export default function Home() {
             dir="auto"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="ابحث عن ملخص أو مادة"
+            placeholder="ابحث عن مادة"
             className="h-[42px] flex-1 rounded-e-sm border border-neutral-300 bg-white px-3 text-base outline-none focus:border-[#4285f4] dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100 dark:placeholder:text-neutral-500"
           />
         </form>
