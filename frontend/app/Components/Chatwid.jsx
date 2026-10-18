@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "./ChatWidget.css";
-
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/chat`;
+const API_URL = "https://as-tedu.vercel.app/api/chat";
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
