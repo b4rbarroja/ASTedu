@@ -6,6 +6,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const subjects = require("./routes/subjects");
+const chat = require("./routes/chat");
 const prisma = require("./libs/prisma");
 
 const app = express();
@@ -94,7 +95,7 @@ app.get(["/api/health/db", "/health/db"], healthDbHandler);
 // ---------------------------------------------------------------------------
 app.use("/subjects", subjects);
 app.use("/api/subjects", subjects);
-
+app.use("/api/chat", chat);
 // 404 (JSON, not HTML) for unknown routes.
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
