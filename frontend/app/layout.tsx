@@ -1,7 +1,6 @@
 import { Noto_Sans_Arabic } from "next/font/google";
 import type { Viewport } from "next";
 import Navbar from "./Components/Nav";
-import Footer from "./Components/Footer";
 import ChatWidget from "./Components/Chatwid";
 import "./globals.css";
 
@@ -36,7 +35,6 @@ export default function RootLayout({
         <Navbar />
         <div className="flex flex-1 flex-col">{children}</div>
         <ChatWidget />
-        <Footer />
       </body>
     </html>
   );
