@@ -27,7 +27,7 @@ app.use(express.json({ limit: "1mb" }));
 const normalize = (s) => s.trim().replace(/\/+$/, "");
 
 const allowedOrigins = [
-  "https://astedu.vercel.app",
+  "https://z-astedu.vercel.app",
   "http://localhost:3000",
   ...(process.env.ALLOWED_ORIGINS || "").split(","),
 ]
