@@ -1,5 +1,6 @@
 import { Noto_Sans_Arabic } from "next/font/google";
 import type { Viewport } from "next";
+import Navbar from "./Components/Nav";
 import ChatWidget from "./Components/Chatwid";
 import "./globals.css";
 
@@ -31,10 +32,9 @@ export default function RootLayout({
       <body
         className={`${font.className} flex min-h-screen flex-col text-neutral-800 antialiased dark:text-neutral-200`}
       >
-        <div className="text-center mt-[400px]">
-          {" "}
-          <h1 className="text-6xl">تم إغلاق الموقع بشكل نهائي</h1>
-        </div>
+        <Navbar />
+        <div className="flex flex-1 flex-col">{children}</div>
+        <ChatWidget />
       </body>
     </html>
   );
